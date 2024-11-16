@@ -14,19 +14,19 @@ export function getFloat16(
 	littleEndian = false,
 ): number {
 	let m = dataView.getUint16(offset, littleEndian);
-	const s = m >> 8;
+	let s = m >> 8;
 	let e = s & 127;
+	s >>= 7;
 	m = (e & 3) * 256 + (m & 255);
 	if ((e >>= 2) === 31) {
-		m = m ? NaN : Infinity;
-	} else {
-		if (e) {
-			m += 1024;
-			e--;
-		}
-		m *= 2 ** (e - 24);
+		return m ? NaN : (s ? -Infinity : Infinity);
 	}
-	return (s >> 7) ? -m : m;
+	if (e) {
+		m += 1024;
+		e--;
+	}
+	m *= 2 ** (e - 24);
+	return s ? -m : m;
 }
 
 /**
