@@ -64,9 +64,9 @@ export const setUint24 = (
 	if (littleEndian) {
 		c = value >> 16 & 255;
 		b = value >> 8 & 255;
-		a = value & 0xff;
+		a = value & 255;
 	} else {
-		c = value & 0xff;
+		c = value & 255;
 		b = value >> 8 & 255;
 		a = value >> 16 & 255;
 	}
