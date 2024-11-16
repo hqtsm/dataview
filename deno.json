@@ -61,7 +61,8 @@
 		"exclude": [
 			"deno.lock",
 			"**/*.test.ts",
-			"scripts"
+			"scripts",
+			"spec"
 		]
 	},
 	"tasks": {
