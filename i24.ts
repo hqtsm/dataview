@@ -62,13 +62,13 @@ export const setUint24 = (
 ): void => {
 	let a, b, c;
 	if (littleEndian) {
-		c = (value >>> 16) & 0xff;
-		b = (value >>> 8) & 0xff;
-		a = (value >>> 0) & 0xff;
+		c = (value >> 16) & 0xff;
+		b = (value >> 8) & 0xff;
+		a = (value >> 0) & 0xff;
 	} else {
-		c = (value >>> 0) & 0xff;
-		b = (value >>> 8) & 0xff;
-		a = (value >>> 16) & 0xff;
+		c = (value >> 0) & 0xff;
+		b = (value >> 8) & 0xff;
+		a = (value >> 16) & 0xff;
 	}
 	if (byteOffset <= -1) {
 		// Trigger native OOB exception.
