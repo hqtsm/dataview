@@ -24,7 +24,7 @@ export function getFloat16(
 			m += 1024;
 			e--;
 		}
-		m *= Math.pow(2, e - 24);
+		m *= 2 ** (e - 24);
 	}
 	return (s >> 7) ? -m : m;
 }
