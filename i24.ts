@@ -10,7 +10,7 @@ export const getInt24 = (
 	dataView: DataView,
 	byteOffset: number,
 	littleEndian = false,
-): number => (getUint24(dataView, byteOffset, littleEndian) << 8) >> 8;
+): number => getUint24(dataView, byteOffset, littleEndian) << 8 >> 8;
 
 /**
  * Get 24-bit unsigned integer.
@@ -28,7 +28,7 @@ export const getUint24 = (
 	const c = dataView.getUint8(byteOffset + 2);
 	const b = dataView.getUint8(byteOffset + 1);
 	const a = dataView.getUint8(byteOffset);
-	return littleEndian ? a | (b << 8) | (c << 16) : (a << 16) | (b << 8) | c;
+	return littleEndian ? a | b << 8 | c << 16 : a << 16 | b << 8 | c;
 };
 
 /**
@@ -62,13 +62,13 @@ export const setUint24 = (
 ): void => {
 	let a, b, c;
 	if (littleEndian) {
-		c = (value >> 16) & 0xff;
-		b = (value >> 8) & 0xff;
-		a = (value >> 0) & 0xff;
+		c = value >> 16 & 255;
+		b = value >> 8 & 255;
+		a = value & 0xff;
 	} else {
-		c = (value >> 0) & 0xff;
-		b = (value >> 8) & 0xff;
-		a = (value >> 16) & 0xff;
+		c = value & 0xff;
+		b = value >> 8 & 255;
+		a = value >> 16 & 255;
 	}
 	if (byteOffset <= -1) {
 		// Trigger native OOB exception.
