@@ -6,13 +6,11 @@
  * @param littleEndian Little endian.
  * @returns Integer value.
  */
-export function getInt24(
+export const getInt24 = (
 	dataView: DataView,
 	byteOffset: number,
 	littleEndian = false,
-): number {
-	return (getUint24(dataView, byteOffset, littleEndian) << 8) >> 8;
-}
+): number => (getUint24(dataView, byteOffset, littleEndian) << 8) >> 8;
 
 /**
  * Get 24-bit unsigned integer.
@@ -22,16 +20,16 @@ export function getInt24(
  * @param littleEndian Little endian.
  * @returns Integer value.
  */
-export function getUint24(
+export const getUint24 = (
 	dataView: DataView,
 	byteOffset: number,
 	littleEndian = false,
-): number {
+): number => {
 	const c = dataView.getUint8(byteOffset + 2);
 	const b = dataView.getUint8(byteOffset + 1);
 	const a = dataView.getUint8(byteOffset);
 	return littleEndian ? a | (b << 8) | (c << 16) : (a << 16) | (b << 8) | c;
-}
+};
 
 /**
  * Set 24-bit signed integer.
@@ -41,14 +39,14 @@ export function getUint24(
  * @param value Integer value.
  * @param littleEndian Little endian.
  */
-export function setInt24(
+export const setInt24 = (
 	dataView: DataView,
 	byteOffset: number,
 	value: number,
 	littleEndian = false,
-): void {
+): void => {
 	setUint24(dataView, byteOffset, value, littleEndian);
-}
+};
 
 /**
  * Set 24-bit unsigned integer.
@@ -58,15 +56,13 @@ export function setInt24(
  * @param value Integer value.
  * @param littleEndian Little endian.
  */
-export function setUint24(
+export const setUint24 = (
 	dataView: DataView,
 	byteOffset: number,
 	value: number,
 	littleEndian = false,
-): void {
-	let c;
-	let b;
-	let a;
+): void => {
+	let a, b, c;
 	if (littleEndian) {
 		c = (value >>> 16) & 0xff;
 		b = (value >>> 8) & 0xff;
@@ -83,4 +79,4 @@ export function setUint24(
 	dataView.setUint8(byteOffset + 2, c);
 	dataView.setUint8(byteOffset + 1, b);
 	dataView.setUint8(byteOffset, a);
-}
+};
