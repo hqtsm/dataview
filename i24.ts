@@ -44,9 +44,7 @@ export const setInt24 = (
 	byteOffset: number,
 	value: number,
 	littleEndian = false,
-): void => {
-	setUint24(dataView, byteOffset, value, littleEndian);
-};
+): void => setUint24(dataView, byteOffset, value, littleEndian);
 
 /**
  * Set 24-bit unsigned integer.
