@@ -63,20 +63,18 @@ export function setUint24(
 	value: number,
 	littleEndian = false,
 ): void {
-	let a, b, c;
+	let a, b = value & 65280;
 	if (littleEndian) {
-		c = value >> 16 & 255;
-		b = value >> 8 & 255;
+		b |= value >> 16 & 255;
 		a = value & 255;
 	} else {
-		c = value & 255;
-		b = value >> 8 & 255;
+		b |= value & 255;
 		a = value >> 16 & 255;
 	}
 	if ((byteOffset |= 0) < 0) {
 		// Trigger native OOB exception.
 		dataView.setUint8(byteOffset, a);
 	}
-	dataView.setUint16(byteOffset + 1, b << 8 | c);
+	dataView.setUint16(byteOffset + 1, b);
 	dataView.setUint8(byteOffset, a);
 }
