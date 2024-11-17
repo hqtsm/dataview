@@ -27,7 +27,7 @@ export function getUint24(
 	byteOffset: number,
 	littleEndian = false,
 ): number {
-	const c = dataView.getUint8(byteOffset + 2);
+	const c = dataView.getUint8((byteOffset |= 0) + 2);
 	const b = dataView.getUint8(byteOffset + 1);
 	const a = dataView.getUint8(byteOffset);
 	return littleEndian ? a | b << 8 | c << 16 : a << 16 | b << 8 | c;
@@ -74,7 +74,7 @@ export function setUint24(
 		b = value >> 8 & 255;
 		a = value >> 16 & 255;
 	}
-	if (byteOffset <= -1) {
+	if ((byteOffset |= 0) < 0) {
 		// Trigger native OOB exception.
 		dataView.setUint8(byteOffset, a);
 	}
