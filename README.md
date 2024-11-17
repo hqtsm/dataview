@@ -18,9 +18,9 @@ const data = new Uint8Array(4);
 const view = new DataView(data.buffer);
 setFloat16(view, 0, Math.PI);
 setFloat16(view, 2, Math.LN10, true);
-console.log(data); // Uint8Array(4) [ 66, 72, 155, 64 ]
-console.log(getFloat16(view, 0)); // 3.140625
-console.log(getFloat16(view, 2, true)); // 2.302734375
+data; // Uint8Array(4) [ 66, 72, 155, 64 ]
+getFloat16(view, 0); // 3.140625
+getFloat16(view, 2, true); // 2.302734375
 ```
 
 ## Int24
@@ -32,9 +32,9 @@ const data = new Uint8Array(6);
 const view = new DataView(data.buffer);
 setInt24(view, 0, -1234);
 setInt24(view, 3, -4567, true);
-console.log(data); // Uint8Array(6) [ 255, 251, 46, 41, 238, 255 ]
-console.log(getInt24(view, 0)); // -1234
-console.log(getInt24(view, 3, true)); // -4567
+data; // Uint8Array(6) [ 255, 251, 46, 41, 238, 255 ]
+getInt24(view, 0); // -1234
+getInt24(view, 3, true); // -4567
 ```
 
 ## Uint24
@@ -46,7 +46,7 @@ const data = new Uint8Array(6);
 const view = new DataView(data.buffer);
 setUint24(view, 0, 12345678);
 setUint24(view, 3, 11223344, true);
-console.log(data); // Uint8Array(6) [ 188, 97, 78, 48, 65, 171 ]
-console.log(getUint24(view, 0)); // 12345678
-console.log(getUint24(view, 3, true)); // 11223344
+data; // Uint8Array(6) [ 188, 97, 78, 48, 65, 171 ]
+getUint24(view, 0); // 12345678
+getUint24(view, 3, true); // 11223344
 ```
