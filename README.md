@@ -1,6 +1,6 @@
 # HQTSM: DataView
 
-Extra DataView functions
+DataView utilities
 
 # Features
 
