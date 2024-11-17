@@ -12,9 +12,6 @@ const F64I16 = (f64i16 as (string | number)[][]).map((a) => a.map(Number)) as [
 
 Deno.test('getFloat16 BE', () => {
 	const dataView = new DataView(new ArrayBuffer(2));
-	Object.defineProperty(dataView, 'getFloat16', {
-		value: null,
-	});
 	for (let i = 0; i < F16.length; i++) {
 		dataView.setUint16(0, i, false);
 		assertEquals(getFloat16(dataView, 0, false), F16[i]);
@@ -23,9 +20,6 @@ Deno.test('getFloat16 BE', () => {
 
 Deno.test('getFloat16 LE', () => {
 	const dataView = new DataView(new ArrayBuffer(2));
-	Object.defineProperty(dataView, 'getFloat16', {
-		value: null,
-	});
 	for (let i = 0; i < F16.length; i++) {
 		dataView.setUint16(0, i, true);
 		assertEquals(getFloat16(dataView, 0, true), F16[i]);
@@ -34,9 +28,6 @@ Deno.test('getFloat16 LE', () => {
 
 Deno.test('setFloat16 BE', () => {
 	const dataView = new DataView(new ArrayBuffer(2));
-	Object.defineProperty(dataView, 'setFloat16', {
-		value: null,
-	});
 	for (let i = 0; i < F16.length; i++) {
 		setFloat16(dataView, 0, F16[i], false);
 		assertEquals(getFloat16(dataView, 0, false), F16[i]);
@@ -53,9 +44,6 @@ Deno.test('setFloat16 BE', () => {
 
 Deno.test('setFloat16 LE', () => {
 	const dataView = new DataView(new ArrayBuffer(2));
-	Object.defineProperty(dataView, 'setFloat16', {
-		value: null,
-	});
 	for (let i = 0; i < F16.length; i++) {
 		setFloat16(dataView, 0, F16[i], true);
 		assertEquals(getFloat16(dataView, 0, true), F16[i]);
