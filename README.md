@@ -2,6 +2,15 @@
 
 DataView utilities
 
+![dataview](https://img.shields.io/badge/dataview-eee)
+![float16](https://img.shields.io/badge/float16-eee)
+![int24](https://img.shields.io/badge/int24-eee)
+![uint24](https://img.shields.io/badge/uint24-eee)
+
+[![JSR](https://jsr.io/badges/@hqtsm/dataview)](https://jsr.io/@hqtsm/dataview)
+[![npm](https://img.shields.io/npm/v/@hqtsm/dataview.svg)](https://npmjs.com/package/@hqtsm/dataview)
+[![CI](https://github.com/hqtsm/dataview/actions/workflows/ci.yaml/badge.svg)](https://github.com/hqtsm/dataview/actions/workflows/ci.yaml)
+
 # Features
 
 - Pure TypeScript, run anywhere
