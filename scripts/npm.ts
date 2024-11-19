@@ -19,6 +19,20 @@ const keywords = readme.map((s) => s.match(/^\!\[(.*)\]\((.*)\)$/))
 	.filter((m) => m && m[2].startsWith('https://img.shields.io/badge/'))
 	.map((m) => m![1]);
 
+const entryPoints = [];
+let types: string | undefined;
+const typed: { [s: string]: string[] } = {};
+for (const [name, path] of Object.entries(denoJson.exports)) {
+	const d = path.replace(/^(\.\/)?(.*)(\.[^.]+)$/i, './esm/$2.d$3');
+	if (name === '.') {
+		entryPoints.unshift(path);
+		types = d;
+	} else {
+		entryPoints.push({ name, path });
+		typed[name.replace(/^\.\//, '')] = [d];
+	}
+}
+
 const outDir = './npm';
 
 await emptyDir(outDir);
@@ -26,8 +40,7 @@ await emptyDir(outDir);
 await build({
 	test: env === 'dev',
 	importMap: 'deno.json',
-	entryPoints: Object.entries(denoJson.exports)
-		.map(([name, path]) => name === '.' ? path : { name, path }),
+	entryPoints,
 	outDir,
 	shims: {
 		deno: env === 'dev' ? 'dev' : false,
@@ -39,6 +52,8 @@ await build({
 		keywords,
 		license: denoJson.license,
 		sideEffects: false,
+		types,
+		...(typed ? { typesVersions: { '*': typed } } : {}),
 		...(env !== 'prod' ? { private: true } : {}),
 		...(GITHUB_REPOSITORY
 			? {
