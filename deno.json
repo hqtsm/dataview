@@ -4,8 +4,12 @@
 	"license": "MIT",
 	"exports": {
 		".": "./mod.ts",
-		"./i24": "./i24.ts",
-		"./f16": "./f16.ts"
+		"./float": "./float/mod.ts",
+		"./float/16": "./float/16.ts",
+		"./f16": "./float/16.ts",
+		"./int": "./int/mod.ts",
+		"./int/16": "./int/24.ts",
+		"./i24": "./int/24.ts"
 	},
 	"imports": {
 		"@deno/dnt": "jsr:@deno/dnt@^0.41.3",

@@ -1,2 +1,2 @@
-export * from './f16.ts';
-export * from './i24.ts';
+export * from './float/mod.ts';
+export * from './int/mod.ts';

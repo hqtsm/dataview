@@ -1,8 +1,8 @@
 import { assertEquals } from '@std/assert';
 
-import { getFloat16, setFloat16 } from './f16.ts';
-import f16 from './spec/f16.json' with { type: 'json' };
-import f64i16 from './spec/f64i16.json' with { type: 'json' };
+import { getFloat16, setFloat16 } from './16.ts';
+import f16 from '../spec/f16.json' with { type: 'json' };
+import f64i16 from '../spec/f64i16.json' with { type: 'json' };
 
 const F16 = (f16 as (string | number)[]).map(Number);
 const F64I16 = (f64i16 as (string | number)[][]).map((a) => a.map(Number)) as [
