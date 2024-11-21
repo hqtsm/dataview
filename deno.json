@@ -8,7 +8,7 @@
 		"./float/16": "./float/16.ts",
 		"./f16": "./float/16.ts",
 		"./int": "./int/mod.ts",
-		"./int/16": "./int/24.ts",
+		"./int/24": "./int/24.ts",
 		"./i24": "./int/24.ts"
 	},
 	"imports": {
