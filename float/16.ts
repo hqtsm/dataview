@@ -1,3 +1,9 @@
+/**
+ * @module
+ *
+ * 16-bit float operations.
+ */
+
 let b;
 
 /**

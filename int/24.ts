@@ -1,4 +1,10 @@
 /**
+ * @module
+ *
+ * 24-bit integer operations.
+ */
+
+/**
  * Get 24-bit signed integer.
  *
  * @param dataView Data view.
