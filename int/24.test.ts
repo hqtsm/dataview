@@ -1,5 +1,4 @@
 import { assertEquals, assertThrows } from '@std/assert';
-
 import { getInt24, getUint24, setInt24, setUint24 } from './24.ts';
 
 Deno.test('getInt24 unsigned', () => {
