@@ -12,7 +12,7 @@
 		"./i24": "./int/24.ts"
 	},
 	"imports": {
-		"@deno/dnt": "jsr:@deno/dnt@^0.41.3",
+		"@deno/dnt": "jsr:@deno/dnt@^0.42.1",
 		"@std/assert": "jsr:@std/assert@^1.0.13"
 	},
 	"fmt": {
