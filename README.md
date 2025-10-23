@@ -14,7 +14,9 @@ DataView utilities
 # Features
 
 - Pure TypeScript, run anywhere
+- Zero dependencies
 - Optimized for speed and size
+- Tree shaking friendly design
 
 # Usage
 
