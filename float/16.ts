@@ -17,7 +17,7 @@ let b;
 export function getFloat16(
 	dataView: DataView,
 	offset: number,
-	littleEndian = false,
+	littleEndian?: boolean,
 ): number {
 	let m = dataView.getUint16(offset, littleEndian);
 	let s = m >> 8;
@@ -47,7 +47,7 @@ export function setFloat16(
 	dataView: DataView,
 	offset: number,
 	value: number,
-	littleEndian = false,
+	littleEndian?: boolean,
 ): void {
 	b ??= new DataView(new ArrayBuffer(4));
 	b.setFloat32(0, value);
